@@ -1,101 +1,177 @@
+"use client";
+import { useRef } from "react";
+import { ContactCard } from "@/components/ContactCard";
+import { SkillCard } from "@/components/SkillCard";
+import { MenuItemWithRef, Topbar } from "@/components/Topbar";
 import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  //-----Variables-----
+  const aboutMeRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
+  const contactsRef = useRef<HTMLDivElement>(null);
+  const menuItems: MenuItemWithRef[] = [
+    { title: "About Me", ref: aboutMeRef },
+    { title: "Skills", ref: skillsRef },
+    { title: "Contacts", ref: contactsRef },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <>
+      <Topbar menuItemsWithRef={menuItems} />
+      <div className="flex justify-center">
+        <div className="max-w-4xl w-full p-5 xl:px-0 space-y-8">
+          <div className="flex space-x-1">
+            <div
+              ref={(node) => {
+                if (node) {
+                  aboutMeRef.current = node;
+                }
+              }}
+              className="bg-pink-100 p-10 rounded-2xl"
+            >
+              <div className="sm:flex sm:items-center">
+                <Image
+                  src={"/img/catpuccin.png"}
+                  alt={"Catppuccin profile picture"}
+                  width={200}
+                  height={200}
+                  className="mr-8"
+                />
+                <h2 className="text-7xl font-bold mt-8">About Me</h2>
+              </div>
+              <p className="text-lg mt-4 text-justify">
+                Sup! I&apos;m LeeSF, and I&apos;m a software engineer.
+                Graduating (In 2026) from Mila University (formerly known as
+                MIU) with a Bachelor in Computer Engineering degree. I have a
+                solid software development foundation, proficient in multiple
+                languages, frameworks, and methodologies. Experienced in
+                collaborative team efforts, eager to contribute to impactful
+                projects. Currently learning more about Go, Azure, Kubernetes,
+                Docker, PostgreSQL, GitHub Actions. Proficient in JavaScript,
+                TypeScript, React, Next.JS, Python, Django, Laravel and Docker.
+              </p>
+              <h3 className="text-3xl font-bold mt-8">
+                Oh, and I like Catppuccin!
+              </h3>
+            </div>
+          </div>
+          <div
+            ref={(node) => {
+              if (node) {
+                skillsRef.current = node;
+              }
+            }}
+            className="flex space-x-1"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="bg-pink-100 p-10 rounded-2xl w-full">
+              <h1 className="text-7xl font-bold">Skills</h1>
+              <div className="flex mt-4 flex-wrap">
+                <SkillCard title={"TypeScript"} img={"/img/typescript.svg"} />
+                <SkillCard title={"React"} img={"/img/react.svg"} />
+                <SkillCard title={"Next.JS"} img={"/img/nextjs.svg"} />
+                <SkillCard title={"ExpoJS"} img={"/img/expojs.svg"} />
+                <SkillCard title={"Laravel"} img={"/img/laravel.svg"} />
+                <SkillCard title={"Python"} img={"/img/python.svg"} />
+                <SkillCard title={"Django"} img={"/img/django.svg"} />
+                <SkillCard title={"Docker"} img={"/img/docker.svg"} />
+                <SkillCard title={"PostgreSQL"} img={"/img/postgresql.svg"} />
+                <SkillCard title={"Azure"} img={"/img/azure.svg"} />
+                {/* <SkillCard */}
+                {/*   title={"TypeScript"} */}
+                {/*   img={"https://cdn.worldvectorlogo.com/logos/typescript.svg"} */}
+                {/* /> */}
+                {/* <SkillCard */}
+                {/*   title={"React"} */}
+                {/*   img={"https://cdn.worldvectorlogo.com/logos/react-2.svg"} */}
+                {/* /> */}
+                {/* <SkillCard */}
+                {/*   title={"Next.JS"} */}
+                {/*   img={"https://cdn.worldvectorlogo.com/logos/next-js.svg"} */}
+                {/* /> */}
+                {/* <SkillCard */}
+                {/*   title={"ExpoJS"} */}
+                {/*   img={"https://cdn.worldvectorlogo.com/logos/expo-1.svg"} */}
+                {/* /> */}
+                {/* <SkillCard */}
+                {/*   title={"Laravel"} */}
+                {/*   img={"https://worldvectorlogo.com/logo/laravel-2"} */}
+                {/* /> */}
+                {/* <SkillCard */}
+                {/*   title={"Python"} */}
+                {/*   img={"https://cdn.worldvectorlogo.com/logos/python-5.svg"} */}
+                {/* /> */}
+                {/* <SkillCard */}
+                {/*   title={"Django"} */}
+                {/*   img={"https://cdn.worldvectorlogo.com/logos/django.svg"} */}
+                {/* /> */}
+                {/* <SkillCard */}
+                {/*   title={"Docker"} */}
+                {/*   img={"https://cdn.worldvectorlogo.com/logos/docker-4.svg"} */}
+                {/* /> */}
+                {/* <SkillCard */}
+                {/*   title={"PostgreSQL"} */}
+                {/*   img={"https://cdn.worldvectorlogo.com/logos/postgresql.svg"} */}
+                {/* /> */}
+                {/* <SkillCard */}
+                {/*   title={"Azure"} */}
+                {/*   img={"https://cdn.worldvectorlogo.com/logos/azure-2.svg"} */}
+                {/* /> */}
+              </div>
+            </div>
+          </div>
+          <div
+            ref={(node) => {
+              if (node) {
+                contactsRef.current = node;
+              }
+            }}
+            className="flex space-x-1"
           >
-            Read our docs
-          </a>
+            <div className="bg-pink-100 p-10 rounded-2xl w-full">
+              <h1 className="text-7xl font-bold">Contacts</h1>
+              <div className="flex mt-4 flex-wrap">
+                <ContactCard
+                  title={"GitHub"}
+                  img={"/img/github.svg"}
+                  link="https://github.com/LeeSF03"
+                />
+                <ContactCard
+                  title={"LinkedIn"}
+                  img={"/img/linkedin.svg"}
+                  link={"https://www.linkedin.com/in/lee-shuen-fei-32479b203/"}
+                />
+                <ContactCard
+                  title={"Email"}
+                  img={"/img/outlook.svg"}
+                  link={"mailto:1106222002@scholar.mila.edu.my"}
+                />
+                {/* <ContactCard */}
+                {/*   title={"GitHub"} */}
+                {/*   img={ */}
+                {/*     "https://cdn.worldvectorlogo.com/logos/github-icon-1.svg" */}
+                {/*   } */}
+                {/*   link="https://github.com/LeeSF03" */}
+                {/* /> */}
+                {/* <ContactCard */}
+                {/*   title={"LinkedIn"} */}
+                {/*   img={ */}
+                {/*     "https://cdn.worldvectorlogo.com/logos/linkedin-icon-3.svg" */}
+                {/*   } */}
+                {/*   link={"https://www.linkedin.com/in/lee-shuen-fei-32479b203/"} */}
+                {/* /> */}
+                {/* <ContactCard */}
+                {/*   title={"Email"} */}
+                {/*   img={ */}
+                {/*     "https://cdn.worldvectorlogo.com/logos/microsoft-outlook-2013-logo.svg" */}
+                {/*   } */}
+                {/*   link={"mailto:1106222002@scholar.mila.edu.my"} */}
+                {/* /> */}
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }

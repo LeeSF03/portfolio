@@ -1,0 +1,15 @@
+services:
+  web:
+    build:
+      context: .
+      tags:
+        - "portfolio:latest"
+        - "portfolio:1.0"
+    volumes:
+      - /app/node_modules
+      - /app/.next
+      - .:/app:ro
+    ports:
+      - "3000:3000"
+    env_file: ./.env
+    command: yarn dev
