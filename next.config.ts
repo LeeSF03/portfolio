@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
-  assetPrefix: "http://172.26.198.128",
+  // output: "standalone",
+  // assetPrefix: "http://172.26.198.128",
+  // assetPrefix: "http://nginx",
+  assetPrefix: "http://localhost:8080",
   // images: {
   //   remotePatterns: [
   //     {
