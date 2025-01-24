@@ -2,19 +2,18 @@ services:
   web:
     build:
       context: .
-      # tags:
-      #   - "portfolio:latest"
-      #   - "portfolio:1.0"
+      dockerfile: dockerfile
+      tags:
+        - "portfolio:1.0"
     volumes:
       - /app/node_modules
-      - /app/.next
-      - .:/app:ro
+      - static:/app/.next/static
+      - images:/app/public/img
     ports:
       - "3000:3000"
     env_file: ./.env
 
   nginx:
-    # image: nginx:1.19.0
     build:
       context: .
       dockerfile: nginx.dockerfile
@@ -22,9 +21,15 @@ services:
       web:
         condition: service_started
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - static:/var/www/portfolio/_next/static
+      - images:/var/www/portfolio/img
     ports:
       - "8080:80"
     environment:
       - NGINX_HOST=portfolio-nginx.com
       - NGINX_PORT=80
+
+volumes:
+  static:
+
+  images:
