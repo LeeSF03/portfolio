@@ -67,16 +67,46 @@ export default function Home() {
             <div className="bg-pink-100 p-10 rounded-2xl w-full">
               <h1 className="text-7xl font-bold">Skills</h1>
               <div className="flex mt-4 flex-wrap">
-                <SkillCard title={"TypeScript"} img={"/img/typescript.svg"} />
-                <SkillCard title={"React"} img={"/img/react.svg"} />
-                <SkillCard title={"Next.JS"} img={"/img/nextjs.svg"} />
-                <SkillCard title={"ExpoJS"} img={"/img/expojs.svg"} />
-                <SkillCard title={"Laravel"} img={"/img/laravel.svg"} />
-                <SkillCard title={"Python"} img={"/img/python.svg"} />
-                <SkillCard title={"Django"} img={"/img/django.svg"} />
-                <SkillCard title={"Docker"} img={"/img/docker.svg"} />
-                <SkillCard title={"PostgreSQL"} img={"/img/postgresql.svg"} />
-                <SkillCard title={"Azure"} img={"/img/azure.svg"} />
+                <SkillCard
+                  title={"TypeScript"}
+                  img={`${process.env.PUBLIC_URL}/img/typescript.svg`}
+                />
+                <SkillCard
+                  title={"React"}
+                  img={`${process.env.PUBLIC_URL}/img/react.svg`}
+                />
+                <SkillCard
+                  title={"Next.JS"}
+                  img={`${process.env.PUBLIC_URL}/img/nextjs.svg`}
+                />
+                <SkillCard
+                  title={"ExpoJS"}
+                  img={`${process.env.PUBLIC_URL}/img/expojs.svg`}
+                />
+                <SkillCard
+                  title={"Laravel"}
+                  img={`${process.env.PUBLIC_URL}/img/laravel.svg`}
+                />
+                <SkillCard
+                  title={"Python"}
+                  img={`${process.env.PUBLIC_URL}/img/python.svg`}
+                />
+                <SkillCard
+                  title={"Django"}
+                  img={`${process.env.PUBLIC_URL}/img/django.svg`}
+                />
+                <SkillCard
+                  title={"Docker"}
+                  img={`${process.env.PUBLIC_URL}/img/docker.svg`}
+                />
+                <SkillCard
+                  title={"PostgreSQL"}
+                  img={`${process.env.PUBLIC_URL}/img/postgresql.svg`}
+                />
+                <SkillCard
+                  title={"Azure"}
+                  img={`${process.env.PUBLIC_URL}/img/azure.svg`}
+                />
                 {/* <SkillCard */}
                 {/*   title={"TypeScript"} */}
                 {/*   img={"https://cdn.worldvectorlogo.com/logos/typescript.svg"} */}
@@ -133,17 +163,17 @@ export default function Home() {
               <div className="flex mt-4 flex-wrap">
                 <ContactCard
                   title={"GitHub"}
-                  img={"/img/github.svg"}
+                  img={`${process.env.PUBLIC_URL}/img/github.svg`}
                   link="https://github.com/LeeSF03"
                 />
                 <ContactCard
                   title={"LinkedIn"}
-                  img={"/img/linkedin.svg"}
+                  img={`${process.env.PUBLIC_URL}/img/linkedin.svg`}
                   link={"https://www.linkedin.com/in/lee-shuen-fei-32479b203/"}
                 />
                 <ContactCard
                   title={"Email"}
-                  img={"/img/outlook.svg"}
+                  img={`${process.env.PUBLIC_URL}/img/outlook.svg`}
                   link={"mailto:1106222002@scholar.mila.edu.my"}
                 />
                 {/* <ContactCard */}
