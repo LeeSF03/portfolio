@@ -1,11 +1,19 @@
+FROM node:22-alpine AS deps
+WORKDIR /app
+COPY package.json .
+RUN yarn install
+
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . ./
+RUN yarn build
+
 FROM node:22-alpine
 WORKDIR /app
-COPY . /app
-COPY package.json /app
-COPY yarn.lock /app
-RUN if [ "$NODE_ENV" = "production" ]; \
-    then yarn install --production && yarn build; \
-    else yarn install; \
-    fi
-EXPOSE $PORT
+COPY --from=builder /app/.next ./.next
+# COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/public ./public
 CMD ["yarn", "start"]
