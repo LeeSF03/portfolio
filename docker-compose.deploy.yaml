@@ -26,13 +26,27 @@ services:
     volumes:
       - static:/var/www/portfolio/_next/static
       - images:/var/www/portfolio/img
+      - acme:/var/www/acme
+      - cert:/var/www/cert
     ports:
       - "80:80"
     environment:
       - NGINX_HOST=portfolio-nginx.com
       - NGINX_PORT=80
 
+  certbot:
+    image: certbot/certbot:v3.1.0
+    container_name: certbot
+    volumes:
+      - acme:/letsencrypt
+      - cert:/etc/letsencrypt
+    command: certonly --reinstall --webroot --webroot-path=/letsencrypt --email shuenfeilee@gmail.com --agree-tos --no-eff-email -d leesf.xyz
+
 volumes:
   static:
 
   images:
+
+  acme:
+
+  cert:
