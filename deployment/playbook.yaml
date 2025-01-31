@@ -1,0 +1,139 @@
+- name: Update apt package index
+  hosts: azure
+  become: yes
+  tasks:
+    - name: Run apt update
+      apt:
+        update_cache: yes
+
+- name: Update sshd config
+  hosts: azure
+  become: yes
+  tasks:
+    - name: Change ssh PasswordAuthentication to no
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^#PasswordAuthentication*"
+        line: "PasswordAuthentication no"
+        state: present
+
+    - name: Change ssh PermitRootLogin to no
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^#PermitRootLogin*"
+        line: "PermitRootLogin no"
+        state: present
+
+    - name: Reload sshd
+      systemd_service:
+        name: sshd
+        state: reloaded
+
+- name: Install and enable docker daemon
+  hosts: azure
+  become: yes
+  tasks:
+    - name: Install dependencies to install docker
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - python3-pip # these dependencies are so that ansible can interact with docker
+          - virtualenv
+          - python3-setuptools
+        state: latest
+        update_cache: true
+      
+    - name: Add docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+
+    - name: Install docker module for python
+      pip:
+        name: docker
+
+- name: Setup user, compose file and inbound traffic
+  hosts: azure
+  become: yes
+  tasks:
+    - name: Add user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: true
+
+    - name: Reset ssh connection to take allow affect of group append
+      meta: reset_connection
+
+    - name: Copy docker compose file
+      copy:
+        src: /mnt/d/Projects/portfolio/docker-compose.deploy.yaml
+        dest: "/home/{{ ansible_user }}/docker-compose.yaml"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: '0644'
+
+    - name: Copy .env file
+      copy:
+        src: /mnt/d/Projects/portfolio/.env
+        dest: "/home/{{ ansible_user }}/.env"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: '0644'
+
+    - name: Install firewall
+      apt:
+        name: firewalld
+
+    - name: Permit inbound traffic to port 80/tcp
+      firewalld:
+        port: 80/tcp
+        permanent: true
+        immediate: true
+        state: enabled
+
+    - name: Log into DockerHub
+      community.docker.docker_login:
+        username: leesf003
+        password: leesf5620
+
+- name: Pull image and run container
+  hosts: azure
+  tasks:
+    - name: Pull portfolio web image
+      community.docker.docker_image_pull:
+        name: leesf003/portfolio-web
+
+    - name: Pull portfolio nginx image
+      community.docker.docker_image_pull:
+        name: leesf003/portfolio-nginx
+
+    - name: Run docker compose down
+      community.docker.docker_compose_v2:
+        state: absent
+        remove_volumes: true
+        project_src: "/home/{{ ansible_user }}"
+        files:
+          - docker-compose.yaml
+
+    - name: Run docker compose up
+      community.docker.docker_compose_v2:
+        state: present
+        project_src: "/home/{{ ansible_user }}"
+        files:
+          - docker-compose.yaml
+
