@@ -1,21 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: "standalone",
-  // assetPrefix: "http://172.26.198.128",
-  // assetPrefix: "http://nginx",
-  assetPrefix: "http://localhost:8080",
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: "https",
-  //       hostname: "worldvectorlogo.com",
-  //       port: "",
-  //       pathname: "/logo/**",
-  //       search: "",
-  //     },
-  //   ],
-  // },
+  // assetPrefix: "http://localhost:8080",
+  assetPrefix: "http://20.2.32.61:80",
 };
 
 export default nextConfig;
