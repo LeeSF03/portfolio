@@ -45,7 +45,7 @@
           - python3-setuptools
         state: latest
         update_cache: true
-      
+
     - name: Add docker GPG apt Key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
@@ -69,6 +69,10 @@
 - name: Setup user, compose file and inbound traffic
   hosts: azure
   become: yes
+
+  vars_files:
+    - vault.yaml
+
   tasks:
     - name: Add user to docker group
       user:
@@ -85,7 +89,7 @@
         dest: "/home/{{ ansible_user }}/docker-compose.yaml"
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
-        mode: '0644'
+        mode: "0644"
 
     - name: Copy .env file
       copy:
@@ -93,13 +97,20 @@
         dest: "/home/{{ ansible_user }}/.env"
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
-        mode: '0644'
+        mode: "0644"
 
     - name: Install firewall
       apt:
         name: firewalld
 
-    - name: Permit inbound traffic to port 80/tcp
+    - name: Permit inbound traffic to port 443/tcp for https
+      firewalld:
+        port: 443/tcp
+        permanent: true
+        immediate: true
+        state: enabled
+
+    - name: Permit inbound traffic to port 80/tcp for http
       firewalld:
         port: 80/tcp
         permanent: true
@@ -109,19 +120,11 @@
     - name: Log into DockerHub
       community.docker.docker_login:
         username: leesf003
-        password: leesf5620
+        password: "{{ docker_pass }}"
 
-- name: Pull image and run container
+- name: Prune, pull image and run container
   hosts: azure
   tasks:
-    - name: Pull portfolio web image
-      community.docker.docker_image_pull:
-        name: leesf003/portfolio-web
-
-    - name: Pull portfolio nginx image
-      community.docker.docker_image_pull:
-        name: leesf003/portfolio-nginx
-
     - name: Run docker compose down
       community.docker.docker_compose_v2:
         state: absent
@@ -130,10 +133,27 @@
         files:
           - docker-compose.yaml
 
+    - name: Prune docker nginx images
+      community.docker.docker_image_remove:
+        prune: true
+        name: leesf003/portfolio-nginx
+
+    - name: Prune web images
+      community.docker.docker_image_remove:
+        prune: true
+        name: leesf003/portfolio-web
+
+    - name: Pull portfolio web image
+      community.docker.docker_image_pull:
+        name: leesf003/portfolio-web
+
+    - name: Pull portfolio nginx image
+      community.docker.docker_image_pull:
+        name: leesf003/portfolio-nginx
+
     - name: Run docker compose up
       community.docker.docker_compose_v2:
         state: present
         project_src: "/home/{{ ansible_user }}"
         files:
           - docker-compose.yaml
-
