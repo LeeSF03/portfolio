@@ -1,0 +1,42 @@
+- name: Prune, pull image and run container
+  hosts: azure
+  tasks:
+    - name: Run docker compose down
+      community.docker.docker_compose_v2:
+        state: absent
+        remove_volumes: true
+        project_src: '/home/{{ ansible_user }}'
+        files:
+          - docker-compose.yaml
+
+    - name: Prune docker nginx images
+      community.docker.docker_image_remove:
+        prune: true
+        name: leesf003/portfolio-nginx
+
+    - name: Prune web images
+      community.docker.docker_image_remove:
+        prune: true
+        name: leesf003/portfolio-web
+
+    - name: Pull portfolio web image
+      community.docker.docker_image_pull:
+        name: leesf003/portfolio-web
+        platform: amd64
+
+    - name: Pull portfolio nginx image
+      community.docker.docker_image_pull:
+        name: leesf003/portfolio-nginx
+        platform: amd64
+
+    - name: Pull cert-renewal-cron image
+      community.docker.docker_image_pull:
+        name: leesf003/cert-renewal-cron
+        platform: amd64
+
+    - name: Run docker compose up
+      community.docker.docker_compose_v2:
+        state: present
+        project_src: '/home/{{ ansible_user }}'
+        files:
+          - docker-compose.yaml

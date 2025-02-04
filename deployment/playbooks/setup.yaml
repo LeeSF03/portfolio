@@ -1,0 +1,55 @@
+- name: Setup user, compose file and inbound traffic
+  hosts: azure
+  become: true
+
+  vars_files:
+    - vault.yaml
+
+  tasks:
+    - name: Add user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: true
+
+    - name: Reset ssh connection to take allow affect of group append
+      meta: reset_connection
+
+    - name: Copy docker compose file
+      copy:
+        src: /mnt/d/Projects/portfolio/docker-compose.deploy.yaml
+        dest: "/home/{{ ansible_user }}/docker-compose.yaml"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "0644"
+
+    - name: Copy .env file
+      copy:
+        src: /mnt/d/Projects/portfolio/.env
+        dest: "/home/{{ ansible_user }}/.env"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "0644"
+
+    - name: Install firewall
+      apt:
+        name: firewalld
+
+    - name: Permit inbound traffic to port 443/tcp for https
+      firewalld:
+        port: 443/tcp
+        permanent: true
+        immediate: true
+        state: enabled
+
+    - name: Permit inbound traffic to port 80/tcp for http
+      firewalld:
+        port: 80/tcp
+        permanent: true
+        immediate: true
+        state: enabled
+
+    - name: Log into DockerHub
+      community.docker.docker_login:
+        username: leesf003
+        password: "{{ docker_pass }}"

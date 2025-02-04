@@ -1,6 +1,6 @@
 - name: Update sshd config
   hosts: azure
-  become: yes
+  become: true
   tasks:
     - name: Change ssh PasswordAuthentication to no
       lineinfile:
@@ -23,7 +23,7 @@
 
 - name: Install and enable docker daemon
   hosts: azure
-  become: yes
+  become: true
   tasks:
     - name: Install dependencies to install docker
       apt:
@@ -60,7 +60,7 @@
 
 - name: Setup user, compose file and inbound traffic
   hosts: azure
-  become: yes
+  become: true
 
   vars_files:
     - vault.yaml
