@@ -36,14 +36,13 @@ services:
       - NGINX_PORT=80
 
   certbot:
-    image: certbot/certbot:v3.1.0
-    container_name: certbot
+    image: leesf003/cert-renewal-cron
+    container_name: certbot-renew-cron
     depends_on:
       - nginx
     volumes:
       - acme:/letsencrypt
       - /etc/letsencrypt:/etc/letsencrypt
-    command: certonly --reinstall --webroot --webroot-path=/letsencrypt --email shuenfeilee@gmail.com --agree-tos --no-eff-email -d leesf.xyz
 
 volumes:
   static:
@@ -51,3 +50,6 @@ volumes:
   images:
 
   acme:
+
+  # cert:
+  #   external: true
