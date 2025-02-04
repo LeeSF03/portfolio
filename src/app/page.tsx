@@ -70,50 +70,62 @@ export default function Home() {
                 <SkillCard
                   title={'TypeScript'}
                   img={`${process.env.PUBLIC_URL}/img/typescript.svg`}
+                  alt={'TypeScript logo'}
                 />
                 <SkillCard
                   title={'React'}
                   img={`${process.env.PUBLIC_URL}/img/react.svg`}
+                  alt={'React logo'}
                 />
                 <SkillCard
                   title={'Next.JS'}
                   img={`${process.env.PUBLIC_URL}/img/nextjs.svg`}
+                  alt={'Next.JS logo'}
                 />
                 <SkillCard
                   title={'ExpoJS'}
                   img={`${process.env.PUBLIC_URL}/img/expojs.svg`}
+                  alt={'ExpoJS logo'}
                 />
                 <SkillCard
                   title={'Laravel'}
                   img={`${process.env.PUBLIC_URL}/img/laravel.svg`}
+                  alt={'Laravel logo'}
                 />
                 <SkillCard
                   title={'Python'}
                   img={`${process.env.PUBLIC_URL}/img/python.svg`}
+                  alt={'Python logo'}
                 />
                 <SkillCard
                   title={'Django'}
                   img={`${process.env.PUBLIC_URL}/img/django.svg`}
+                  alt={'Django logo'}
                 />
                 <SkillCard
                   title={'Ansible'}
                   img={`${process.env.PUBLIC_URL}/img/ansible.svg`}
+                  alt={'Ansible logo'}
                 />
                 <SkillCard
                   title={'Nginx'}
                   img={`${process.env.PUBLIC_URL}/img/nginx.svg`}
+                  alt={'Nginx logo'}
                 />
                 <SkillCard
                   title={'Docker'}
                   img={`${process.env.PUBLIC_URL}/img/docker.svg`}
+                  alt={'Docker logo'}
                 />
                 <SkillCard
                   title={'PostgreSQL'}
                   img={`${process.env.PUBLIC_URL}/img/postgresql.svg`}
+                  alt={'PostgreSQL logo'}
                 />
                 <SkillCard
                   title={'Azure'}
                   img={`${process.env.PUBLIC_URL}/img/azure.svg`}
+                  alt={'Azure logo'}
                 />
                 {/* <SkillCard */}
                 {/*   title={"TypeScript"} */}
