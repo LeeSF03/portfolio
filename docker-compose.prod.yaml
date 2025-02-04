@@ -5,13 +5,13 @@ services:
       context: .
       dockerfile: dockerfile
       tags:
-        - "leesf003/portfolio-web"
+        - 'leesf003/portfolio-web'
     volumes:
       - /app/node_modules
       - static:/app/.next/static
       - images:/app/public/img
     ports:
-      - "3000:3000"
+      - '3000:3000'
     env_file: ./.env
     # healthcheck:
     #   test: ["CMD", "curl", "-f", "http://localhost:3000"]
@@ -27,7 +27,7 @@ services:
       context: .
       dockerfile: nginx.dockerfile
       tags:
-        - "leesf003/portfolio-nginx"
+        - 'leesf003/portfolio-nginx'
     # depends_on:
     #   web:
     #     condition: service_healthy
@@ -35,7 +35,7 @@ services:
       - static:/var/www/portfolio/_next/static
       - images:/var/www/portfolio/img
     ports:
-      - "8080:80"
+      - '8080:80'
     environment:
       - NGINX_HOST=portfolio-nginx.com
       - NGINX_PORT=80
