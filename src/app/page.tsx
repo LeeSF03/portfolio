@@ -1,46 +1,46 @@
-"use client";
-import { useRef } from "react";
-import { ContactCard } from "@/components/ContactCard";
-import { SkillCard } from "@/components/SkillCard";
-import { MenuItemWithRef, Topbar } from "@/components/Topbar";
-import Image from "next/image";
+'use client'
+import { useRef } from 'react'
+import { ContactCard } from '@/components/ContactCard'
+import { SkillCard } from '@/components/SkillCard'
+import { MenuItemWithRef, Topbar } from '@/components/Topbar'
+import Image from 'next/image'
 
 export default function Home() {
   //-----Variables-----
-  const aboutMeRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
-  const contactsRef = useRef<HTMLDivElement>(null);
+  const aboutMeRef = useRef<HTMLDivElement>(null)
+  const skillsRef = useRef<HTMLDivElement>(null)
+  const contactsRef = useRef<HTMLDivElement>(null)
   const menuItems: MenuItemWithRef[] = [
-    { title: "About Me", ref: aboutMeRef },
-    { title: "Skills", ref: skillsRef },
-    { title: "Contacts", ref: contactsRef },
-  ];
+    { title: 'About Me', ref: aboutMeRef },
+    { title: 'Skills', ref: skillsRef },
+    { title: 'Contacts', ref: contactsRef },
+  ]
 
   return (
     <>
       <Topbar menuItemsWithRef={menuItems} />
-      <div className="flex justify-center">
-        <div className="max-w-4xl w-full p-5 xl:px-0 space-y-8">
+      <div className="flex flex-1 justify-center">
+        <div className="w-full max-w-4xl space-y-8 p-5 xl:px-0">
           <div className="flex space-x-1">
             <div
               ref={(node) => {
                 if (node) {
-                  aboutMeRef.current = node;
+                  aboutMeRef.current = node
                 }
               }}
-              className="bg-pink-100 p-10 rounded-2xl"
+              className="rounded-2xl border-4 border-gray-800 bg-pink-100 p-10 shadow-[7px_7px]"
             >
-              <div className="sm:flex sm:items-center">
+              <div className="flex flex-col items-center rounded-3xl border-4 border-gray-800 p-3 shadow-[9px_9px_lightblue] sm:flex-row sm:rounded-full">
                 <Image
-                  src={"/img/catpuccin.png"}
-                  alt={"Catppuccin profile picture"}
+                  src={'/img/catpuccin.png'}
+                  alt={'Catppuccin profile picture'}
                   width={200}
                   height={200}
-                  className="mr-8"
+                  className="rounded-full sm:mr-8"
                 />
-                <h2 className="text-7xl font-bold mt-8">About Me</h2>
+                <h2 className="text-6xl font-bold">About Me</h2>
               </div>
-              <p className="text-lg mt-4 text-justify">
+              <p className="mt-4 text-justify text-lg">
                 Sup! I&apos;m LeeSF, and I&apos;m a software engineer.
                 Graduating (In 2026) from Mila University (formerly known as
                 MIU) with a Bachelor in Computer Engineering degree. I have a
@@ -51,7 +51,7 @@ export default function Home() {
                 Docker, PostgreSQL, GitHub Actions. Proficient in JavaScript,
                 TypeScript, React, Next.JS, Python, Django, Laravel and Docker.
               </p>
-              <h3 className="text-3xl font-bold mt-8">
+              <h3 className="mt-8 text-3xl font-bold">
                 Oh, and I like Catppuccin!
               </h3>
             </div>
@@ -59,52 +59,60 @@ export default function Home() {
           <div
             ref={(node) => {
               if (node) {
-                skillsRef.current = node;
+                skillsRef.current = node
               }
             }}
-            className="flex space-x-1"
+            className="rounded-2xl border-4 border-gray-800 bg-pink-100 shadow-[7px_7px]"
           >
-            <div className="bg-pink-100 p-10 rounded-2xl w-full">
-              <h1 className="text-7xl font-bold">Skills</h1>
-              <div className="flex mt-4 flex-wrap">
+            <div className="w-full rounded-2xl bg-pink-100 p-10">
+              <h1 className="text-6xl font-bold">Skills</h1>
+              <div className="mt-4 flex flex-wrap">
                 <SkillCard
-                  title={"TypeScript"}
+                  title={'TypeScript'}
                   img={`${process.env.PUBLIC_URL}/img/typescript.svg`}
                 />
                 <SkillCard
-                  title={"React"}
+                  title={'React'}
                   img={`${process.env.PUBLIC_URL}/img/react.svg`}
                 />
                 <SkillCard
-                  title={"Next.JS"}
+                  title={'Next.JS'}
                   img={`${process.env.PUBLIC_URL}/img/nextjs.svg`}
                 />
                 <SkillCard
-                  title={"ExpoJS"}
+                  title={'ExpoJS'}
                   img={`${process.env.PUBLIC_URL}/img/expojs.svg`}
                 />
                 <SkillCard
-                  title={"Laravel"}
+                  title={'Laravel'}
                   img={`${process.env.PUBLIC_URL}/img/laravel.svg`}
                 />
                 <SkillCard
-                  title={"Python"}
+                  title={'Python'}
                   img={`${process.env.PUBLIC_URL}/img/python.svg`}
                 />
                 <SkillCard
-                  title={"Django"}
+                  title={'Django'}
                   img={`${process.env.PUBLIC_URL}/img/django.svg`}
                 />
                 <SkillCard
-                  title={"Docker"}
+                  title={'Ansible'}
+                  img={`${process.env.PUBLIC_URL}/img/ansible.svg`}
+                />
+                <SkillCard
+                  title={'Nginx'}
+                  img={`${process.env.PUBLIC_URL}/img/nginx.svg`}
+                />
+                <SkillCard
+                  title={'Docker'}
                   img={`${process.env.PUBLIC_URL}/img/docker.svg`}
                 />
                 <SkillCard
-                  title={"PostgreSQL"}
+                  title={'PostgreSQL'}
                   img={`${process.env.PUBLIC_URL}/img/postgresql.svg`}
                 />
                 <SkillCard
-                  title={"Azure"}
+                  title={'Azure'}
                   img={`${process.env.PUBLIC_URL}/img/azure.svg`}
                 />
                 {/* <SkillCard */}
@@ -153,28 +161,28 @@ export default function Home() {
           <div
             ref={(node) => {
               if (node) {
-                contactsRef.current = node;
+                contactsRef.current = node
               }
             }}
-            className="flex space-x-1"
+            className="rounded-2xl border-4 border-gray-800 bg-pink-100 shadow-[7px_7px]"
           >
-            <div className="bg-pink-100 p-10 rounded-2xl w-full">
-              <h1 className="text-7xl font-bold">Contacts</h1>
-              <div className="flex mt-4 flex-wrap">
+            <div className="w-full rounded-2xl bg-pink-100 p-10">
+              <h1 className="text-6xl font-bold">Contacts</h1>
+              <div className="mt-4 flex flex-wrap">
                 <ContactCard
-                  title={"GitHub"}
+                  title={'GitHub'}
                   img={`${process.env.PUBLIC_URL}/img/github.svg`}
                   link="https://github.com/LeeSF03"
                 />
                 <ContactCard
-                  title={"LinkedIn"}
+                  title={'LinkedIn'}
                   img={`${process.env.PUBLIC_URL}/img/linkedin.svg`}
-                  link={"https://www.linkedin.com/in/lee-shuen-fei-32479b203/"}
+                  link={'https://www.linkedin.com/in/lee-shuen-fei-32479b203/'}
                 />
                 <ContactCard
-                  title={"Email"}
+                  title={'Email'}
                   img={`${process.env.PUBLIC_URL}/img/outlook.svg`}
-                  link={"mailto:1106222002@scholar.mila.edu.my"}
+                  link={'mailto:1106222002@scholar.mila.edu.my'}
                 />
                 {/* <ContactCard */}
                 {/*   title={"GitHub"} */}
@@ -203,5 +211,5 @@ export default function Home() {
         </div>
       </div>
     </>
-  );
+  )
 }
