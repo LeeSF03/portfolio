@@ -1,11 +1,3 @@
-- name: Update apt package index
-  hosts: azure
-  become: yes
-  tasks:
-    - name: Run apt update
-      apt:
-        update_cache: yes
-
 - name: Update sshd config
   hosts: azure
   become: yes
@@ -146,10 +138,17 @@
     - name: Pull portfolio web image
       community.docker.docker_image_pull:
         name: leesf003/portfolio-web
+        platform: amd64
 
     - name: Pull portfolio nginx image
       community.docker.docker_image_pull:
         name: leesf003/portfolio-nginx
+        platform: amd64
+
+    - name: Pull cert-renewal-cron image
+      community.docker.docker_image_pull:
+        name: leesf003/cert-renewal-cron
+        platform: amd64
 
     - name: Run docker compose up
       community.docker.docker_compose_v2:
