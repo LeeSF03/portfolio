@@ -19,7 +19,7 @@ jobs:
           cache: yarn
 
       - name: Install dependencies
-        run: yarn add
+        run: yarn install
 
       - name: Run Vitest
         run: yarn test --reporter=json > vitest-report.json || echo "test fail" is-test-fail
