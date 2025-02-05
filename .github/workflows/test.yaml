@@ -1,0 +1,42 @@
+name: Run Vitest on NextJS
+run-name: running test written by ${{ github.actor }}
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Run_Vitest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn add
+
+      - name: Run Vitest
+        run: yarn test --reporter=json > vitest-report.json || echo "test fail" is-test-fail
+
+      - name: Get test results
+        id: test-results
+        run: |
+          if [ -f is-test-fail ]; then
+            echo "status=❌ Tests failed" >> $GITHUB_ENV
+          else
+            echo "status=✅ All tests passed" >> $GITHUB_ENV
+          fi
+
+      - name: Post PR comment
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            ## Vitest Results
+            ${{ env.status }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
