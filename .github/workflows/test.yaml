@@ -1,5 +1,5 @@
 name: Run Vitest on NextJS
-run-name: running test written by ${{ github.actor }}
+run-name: Running test written by ${{ github.actor }}
 on:
   pull_request:
     branches:
