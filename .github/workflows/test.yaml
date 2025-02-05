@@ -39,3 +39,4 @@ jobs:
           message: |
             ## Vitest Results
             ${{ env.status }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
