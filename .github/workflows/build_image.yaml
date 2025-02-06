@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  Build_Push_Docker_Image:
+  build_push_docker_image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
