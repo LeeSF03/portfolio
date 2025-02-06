@@ -1,5 +1,6 @@
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { ClassValue } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -7,7 +8,7 @@ type SkillCardProps = {
   title: string
   img: string
   link: string
-  className?: string
+  className?: ClassValue
   alt?: string
 }
 export const ContactCard = ({
