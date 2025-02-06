@@ -1,13 +1,16 @@
 name: Deploy container to VM
 run-name: Deploying container to Azure VM
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows:
+      - Build and push docker image
+    types:
+      - completed
 
 jobs:
-  Deploy_Containers:
+  deploy_containers:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
