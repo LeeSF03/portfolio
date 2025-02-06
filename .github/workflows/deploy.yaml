@@ -17,6 +17,8 @@ jobs:
 
       - name: Setup SSH Key
         run: |
+          mkdir ~/.ssh
+          touch ~/.ssh/leesf_az_key_pair.pem
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/leesf_az_key_pair.pem
           chmod 600 ~/.ssh/leesf_az_key_pair.pem
 
