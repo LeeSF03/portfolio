@@ -12,8 +12,8 @@ type TopbarProps = {
 
 export const Topbar = ({ menuItemsWithRef }: TopbarProps) => {
   return (
-    <div className="top-0 flex justify-center bg-none px-5 py-2">
-      <div className="w-full max-w-5xl rounded-xl border-4 border-gray-800 bg-blue-400 p-2 shadow-[7px_7px]">
+    <div className="top-0 flex justify-center bg-none py-2">
+      <div className="w-full rounded-xl border-4 border-gray-800 bg-blue-400 p-2 shadow-[7px_7px]">
         <Menubar className="w-full justify-center rounded-lg border-4 border-gray-800 bg-orange-200 py-5">
           <MenubarMenu>
             {menuItemsWithRef.map(({ title, ref }, index) => (
