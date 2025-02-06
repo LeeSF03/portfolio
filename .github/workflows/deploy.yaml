@@ -1,0 +1,31 @@
+name: Deploy container to VM
+run-name: Deploying container to Azure VM
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Deploy_Containers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH Key
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/leesf_az_key_pair.pem
+          chmod 600 ~/.ssh/leesf_az_key_pair.pem
+
+      - name: Install Ansible
+        shell: bash
+        run: |
+          sudo apt update
+          sudo apt install -y ansible
+
+      - name: Run Ansible Playbook
+        env:
+          ANSIBLE_USER: leesf
+          ANSIBLE_HOST_KEY_CHECKING: False
+        run: |
+          ansible-playbook -i deployment/inventory.yaml playbooks/deploy.yaml
