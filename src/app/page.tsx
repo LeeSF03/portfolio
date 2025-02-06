@@ -41,17 +41,58 @@ export default function Home() {
               />
               <h2 className="text-6xl font-bold">About Me</h2>
             </div>
-            <p className="mt-4 text-justify text-lg">
-              Sup! I&apos;m LeeSF, and I&apos;m a software engineer. Graduating
-              (In 2026) from Mila University (formerly known as MIU) with a
-              Bachelor in Computer Engineering degree. I have a solid software
-              development foundation, proficient in multiple languages,
-              frameworks, and methodologies. Experienced in collaborative team
-              efforts, eager to contribute to impactful projects. Currently
-              learning more about Go, Azure, Kubernetes, Docker, PostgreSQL,
-              GitHub Actions. Proficient in JavaScript, TypeScript, React,
-              Next.JS, Python, Django, Laravel and Docker.
-            </p>
+            <div className="flex w-full justify-center py-4">
+              <div className="w-full max-w-xl">
+                <div className="flex items-center py-1">
+                  <Image
+                    src={'/img/star.png'}
+                    width={26}
+                    height={20}
+                    alt={'star point'}
+                    className="mr-2"
+                  />
+                  <span className="text-xl font-bold">Name: Lee Shuen Fei</span>
+                </div>
+                <div className="flex items-center py-1">
+                  <Image
+                    src={'/img/star.png'}
+                    width={26}
+                    height={20}
+                    alt={'star point'}
+                    className="mr-2"
+                  />
+                  <span className="text-xl font-bold">
+                    Majoring: Bachelor in Computer Engineering
+                  </span>
+                </div>
+                <div className="flex items-center py-1">
+                  <Image
+                    src={'/img/star.png'}
+                    width={26}
+                    height={20}
+                    alt={'star point'}
+                    className="mr-2"
+                  />
+                  <span className="text-xl font-bold">
+                    University: Mila University (formerly known as MIU)
+                  </span>
+                </div>
+                <div className="flex items-center py-1">
+                  <Image
+                    src={'/img/star.png'}
+                    width={26}
+                    height={20}
+                    alt={'star point'}
+                    className="mr-2"
+                  />
+                  <span className="text-xl font-bold">
+                    Hobbies: Reading (Math, Programming, Manga), Programming,
+                    Tinkering my Neovim config
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <h3 className="mt-8 text-3xl font-bold">
               Oh, and I like Catppuccin!
             </h3>
@@ -191,6 +232,11 @@ export default function Home() {
                   img={`${root}/img/linkedin.svg`}
                   link={'https://www.linkedin.com/in/lee-shuen-fei-32479b203/'}
                 />
+                {/* <ContactCard */}
+                {/*   title={'Resume'} */}
+                {/*   img={`${root}/img/resume.png`} */}
+                {/*   link={`${root}/file/leesf_resume.pdf`} */}
+                {/* /> */}
                 <ContactCard
                   title={'Email'}
                   img={`${root}/img/outlook.svg`}
