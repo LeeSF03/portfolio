@@ -33,4 +33,4 @@ jobs:
           ANSIBLE_USER: leesf
           ANSIBLE_HOST_KEY_CHECKING: False
         run: |
-          ansible-playbook -i deployment/inventory.yaml playbooks/deploy.yaml
+          ansible-playbook -i deployment/inventory.yaml deployment/playbooks/deploy.yaml
