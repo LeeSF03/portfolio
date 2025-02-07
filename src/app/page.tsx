@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       <div className="flex flex-row-reverse">
-        <DropdownMenuNav pages={pages} />
+        <DropdownMenuNav pages={pages} currentPageIndex={0} />
       </div>
       <Topbar menuItemsWithRef={menuItems} />
       <div className="flex flex-1 justify-center">
