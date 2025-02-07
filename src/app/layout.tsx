@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-[url(https://leesf.xyz/img/background.jpeg)] bg-fixed antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-[url(/img/background.jpg)] bg-fixed antialiased`}
       >
         <div className="flex w-full justify-center">
           <div className="flex w-full max-w-5xl flex-col p-7">
