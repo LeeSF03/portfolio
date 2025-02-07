@@ -4,7 +4,7 @@ import { ContactCard } from '@/components/ContactCard'
 import { SkillCard } from '@/components/SkillCard'
 import { MenuItemWithRef, Topbar } from '@/components/Topbar'
 import Image from 'next/image'
-import { pages, publicRoot } from '@/constants/global'
+import { publicRoot } from '@/constants/global'
 
 export default function HomePage() {
   //-----Variables-----
