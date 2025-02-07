@@ -5,7 +5,6 @@ import { SkillCard } from '@/components/SkillCard'
 import { MenuItemWithRef, Topbar } from '@/components/Topbar'
 import Image from 'next/image'
 import { pages, publicRoot } from '@/constants/global'
-import { DropdownMenuNav } from '@/components/DropdownMenuNav'
 
 export default function HomePage() {
   //-----Variables-----
@@ -20,9 +19,6 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="flex flex-row-reverse">
-        <DropdownMenuNav pages={pages} currentPageIndex={0} />
-      </div>
       <Topbar menuItemsWithRef={menuItems} />
       <div className="flex flex-1 justify-center">
         <div className="w-full space-y-8 pt-5">

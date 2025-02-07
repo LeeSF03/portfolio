@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import { pages } from '@/constants/global'
+import { DropdownMenuNav } from '@/components/DropdownMenuNav'
 
 const bg =
   process.env.NODE_ENV === 'production'
@@ -33,7 +35,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${bg} bg-fixed antialiased`}
       >
         <div className="flex w-full justify-center">
-          <div className="flex max-w-5xl flex-col p-7">{children}</div>
+          <div className="flex w-full max-w-5xl flex-col p-7">
+            <div className="flex flex-row-reverse">
+              <DropdownMenuNav />
+            </div>
+            {children}
+          </div>
         </div>
       </body>
     </html>
