@@ -1,6 +1,13 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import { pages } from '@/constants/global'
+import { DropdownMenuNav } from '@/components/DropdownMenuNav'
+
+const bg =
+  process.env.NODE_ENV === 'production'
+    ? 'bg-[url(https://leesf.xyz/img/background.jpeg)]'
+    : 'bg-[url(/img/background.jpg)]'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,9 +32,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-[url(/img/background.jpg)] bg-fixed antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bg} bg-fixed antialiased`}
       >
-        {children}
+        <div className="flex w-full justify-center">
+          <div className="flex w-full max-w-5xl flex-col p-7">
+            <div className="flex flex-row-reverse">
+              <DropdownMenuNav />
+            </div>
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   )

@@ -4,8 +4,9 @@ import { ContactCard } from '@/components/ContactCard'
 import { SkillCard } from '@/components/SkillCard'
 import { MenuItemWithRef, Topbar } from '@/components/Topbar'
 import Image from 'next/image'
+import { pages, publicRoot } from '@/constants/global'
 
-export default function Home() {
+export default function HomePage() {
   //-----Variables-----
   const aboutMeRef = useRef<HTMLDivElement>(null)
   const skillsRef = useRef<HTMLDivElement>(null)
@@ -20,41 +21,80 @@ export default function Home() {
     <>
       <Topbar menuItemsWithRef={menuItems} />
       <div className="flex flex-1 justify-center">
-        <div className="w-full max-w-4xl space-y-8 p-5 xl:px-0">
-          <div className="flex space-x-1">
-            <div
-              ref={(node) => {
-                if (node) {
-                  aboutMeRef.current = node
-                }
-              }}
-              className="rounded-2xl border-4 border-gray-800 bg-pink-100 p-10 shadow-[7px_7px]"
-            >
-              <div className="flex flex-col items-center rounded-3xl border-4 border-gray-800 p-3 shadow-[9px_9px_lightblue] sm:flex-row sm:rounded-full">
-                <Image
-                  src={'/img/catpuccin.png'}
-                  alt={'Catppuccin profile picture'}
-                  width={200}
-                  height={200}
-                  className="rounded-full sm:mr-8"
-                />
-                <h2 className="text-6xl font-bold">About Me</h2>
-              </div>
-              <p className="mt-4 text-justify text-lg">
-                Sup! I&apos;m LeeSF, and I&apos;m a software engineer.
-                Graduating (In 2026) from Mila University (formerly known as
-                MIU) with a Bachelor in Computer Engineering degree. I have a
-                solid software development foundation, proficient in multiple
-                languages, frameworks, and methodologies. Experienced in
-                collaborative team efforts, eager to contribute to impactful
-                projects. Currently learning more about Go, Azure, Kubernetes,
-                Docker, PostgreSQL, GitHub Actions. Proficient in JavaScript,
-                TypeScript, React, Next.JS, Python, Django, Laravel and Docker.
-              </p>
-              <h3 className="mt-8 text-3xl font-bold">
-                Oh, and I like Catppuccin!
-              </h3>
+        <div className="w-full space-y-8 pt-5">
+          <div
+            ref={(node) => {
+              if (node) {
+                aboutMeRef.current = node
+              }
+            }}
+            className="rounded-2xl border-4 border-gray-800 bg-pink-100 p-10 shadow-[7px_7px]"
+          >
+            <div className="flex flex-col items-center rounded-3xl border-4 border-gray-800 p-3 shadow-[9px_9px_lightblue] sm:flex-row sm:rounded-full">
+              <Image
+                src={'/img/catpuccin.png'}
+                alt={'Catppuccin profile picture'}
+                width={200}
+                height={200}
+                className="rounded-full sm:mr-8"
+              />
+              <h2 className="text-6xl font-bold">About Me</h2>
             </div>
+            <div className="flex w-full justify-center py-4">
+              <div className="w-full max-w-xl">
+                <div className="flex items-center py-1">
+                  <Image
+                    src={'/img/star.png'}
+                    width={26}
+                    height={20}
+                    alt={'star point'}
+                    className="mr-2"
+                  />
+                  <span className="text-xl font-bold">Name: Lee Shuen Fei</span>
+                </div>
+                <div className="flex items-center py-1">
+                  <Image
+                    src={'/img/star.png'}
+                    width={26}
+                    height={20}
+                    alt={'star point'}
+                    className="mr-2"
+                  />
+                  <span className="text-xl font-bold">
+                    Majoring: Bachelor in Computer Engineering
+                  </span>
+                </div>
+                <div className="flex items-center py-1">
+                  <Image
+                    src={'/img/star.png'}
+                    width={26}
+                    height={20}
+                    alt={'star point'}
+                    className="mr-2"
+                  />
+                  <span className="text-xl font-bold">
+                    University: Mila University (formerly known as MIU)
+                  </span>
+                </div>
+                <div className="flex items-center py-1">
+                  <Image
+                    src={'/img/star.png'}
+                    width={26}
+                    height={20}
+                    alt={'star point'}
+                    className="mr-2"
+                  />
+                  <span className="text-xl font-bold">
+                    Hobbies: Reading (Math, Programming, Manga), Programming,
+                    Tinkering my Neovim config
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <h3 className="mt-8 text-3xl font-bold">
+              Oh, and I like Catppuccin!
+            </h3>
           </div>
           <div
             ref={(node) => {
@@ -69,62 +109,62 @@ export default function Home() {
               <div className="mt-4 flex flex-wrap">
                 <SkillCard
                   title={'TypeScript'}
-                  img={`${process.env.PUBLIC_URL}/img/typescript.svg`}
+                  img={`${publicRoot}/img/typescript.svg`}
                   alt={'TypeScript logo'}
                 />
                 <SkillCard
                   title={'React'}
-                  img={`${process.env.PUBLIC_URL}/img/react.svg`}
+                  img={`${publicRoot}/img/react.svg`}
                   alt={'React logo'}
                 />
                 <SkillCard
                   title={'Next.JS'}
-                  img={`${process.env.PUBLIC_URL}/img/nextjs.svg`}
+                  img={`${publicRoot}/img/nextjs.svg`}
                   alt={'Next.JS logo'}
                 />
                 <SkillCard
                   title={'ExpoJS'}
-                  img={`${process.env.PUBLIC_URL}/img/expojs.svg`}
+                  img={`${publicRoot}/img/expojs.svg`}
                   alt={'ExpoJS logo'}
                 />
                 <SkillCard
                   title={'Laravel'}
-                  img={`${process.env.PUBLIC_URL}/img/laravel.svg`}
+                  img={`${publicRoot}/img/laravel.svg`}
                   alt={'Laravel logo'}
                 />
                 <SkillCard
                   title={'Python'}
-                  img={`${process.env.PUBLIC_URL}/img/python.svg`}
+                  img={`${publicRoot}/img/python.svg`}
                   alt={'Python logo'}
                 />
                 <SkillCard
                   title={'Django'}
-                  img={`${process.env.PUBLIC_URL}/img/django.svg`}
+                  img={`${publicRoot}/img/django.svg`}
                   alt={'Django logo'}
                 />
                 <SkillCard
                   title={'Ansible'}
-                  img={`${process.env.PUBLIC_URL}/img/ansible.svg`}
+                  img={`${publicRoot}/img/ansible.svg`}
                   alt={'Ansible logo'}
                 />
                 <SkillCard
                   title={'Nginx'}
-                  img={`${process.env.PUBLIC_URL}/img/nginx.svg`}
+                  img={`${publicRoot}/img/nginx.svg`}
                   alt={'Nginx logo'}
                 />
                 <SkillCard
                   title={'Docker'}
-                  img={`${process.env.PUBLIC_URL}/img/docker.svg`}
+                  img={`${publicRoot}/img/docker.svg`}
                   alt={'Docker logo'}
                 />
                 <SkillCard
                   title={'PostgreSQL'}
-                  img={`${process.env.PUBLIC_URL}/img/postgresql.svg`}
+                  img={`${publicRoot}/img/postgresql.svg`}
                   alt={'PostgreSQL logo'}
                 />
                 <SkillCard
                   title={'Azure'}
-                  img={`${process.env.PUBLIC_URL}/img/azure.svg`}
+                  img={`${publicRoot}/img/azure.svg`}
                   alt={'Azure logo'}
                 />
                 {/* <SkillCard */}
@@ -183,17 +223,22 @@ export default function Home() {
               <div className="mt-4 flex flex-wrap">
                 <ContactCard
                   title={'GitHub'}
-                  img={`${process.env.PUBLIC_URL}/img/github.svg`}
+                  img={`${publicRoot}/img/github.svg`}
                   link="https://github.com/LeeSF03"
                 />
                 <ContactCard
                   title={'LinkedIn'}
-                  img={`${process.env.PUBLIC_URL}/img/linkedin.svg`}
+                  img={`${publicRoot}/img/linkedin.svg`}
                   link={'https://www.linkedin.com/in/lee-shuen-fei-32479b203/'}
                 />
+                {/* <ContactCard */}
+                {/*   title={'Resume'} */}
+                {/*   img={`${publicRoot}/img/resume.png`} */}
+                {/*   link={`${publicRoot}/file/leesf_resume.pdf`} */}
+                {/* /> */}
                 <ContactCard
                   title={'Email'}
-                  img={`${process.env.PUBLIC_URL}/img/outlook.svg`}
+                  img={`${publicRoot}/img/outlook.svg`}
                   link={'mailto:1106222002@scholar.mila.edu.my'}
                 />
                 {/* <ContactCard */}

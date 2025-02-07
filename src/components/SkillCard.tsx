@@ -1,11 +1,12 @@
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { ClassValue } from 'clsx'
 import Image from 'next/image'
 
 type SkillCardProps = {
   title: string
   img: string
-  className?: string
+  className?: ClassValue
   alt?: string
 }
 export const SkillCard = ({ title, img, className, alt }: SkillCardProps) => {
