@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
 const bg =
-  process.env.PUBLIC_URL == 'production'
+  process.env.NODE_ENV === 'production'
     ? 'bg-[url(https://leesf.xyz/img/background.jpeg)]'
     : 'bg-[url(/img/background.jpg)]'
 

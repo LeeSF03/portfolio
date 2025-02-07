@@ -4,10 +4,8 @@ import { ContactCard } from '@/components/ContactCard'
 import { SkillCard } from '@/components/SkillCard'
 import { MenuItemWithRef, Topbar } from '@/components/Topbar'
 import Image from 'next/image'
-import { pages } from '@/constants/global'
+import { pages, publicRoot } from '@/constants/global'
 import { DropdownMenuNav } from '@/components/DropdownMenuNav'
-
-const root = process.env.PUBLIC_URL ?? ''
 
 export default function HomePage() {
   //-----Variables-----
@@ -115,62 +113,62 @@ export default function HomePage() {
               <div className="mt-4 flex flex-wrap">
                 <SkillCard
                   title={'TypeScript'}
-                  img={`${root}/img/typescript.svg`}
+                  img={`${publicRoot}/img/typescript.svg`}
                   alt={'TypeScript logo'}
                 />
                 <SkillCard
                   title={'React'}
-                  img={`${root}/img/react.svg`}
+                  img={`${publicRoot}/img/react.svg`}
                   alt={'React logo'}
                 />
                 <SkillCard
                   title={'Next.JS'}
-                  img={`${root}/img/nextjs.svg`}
+                  img={`${publicRoot}/img/nextjs.svg`}
                   alt={'Next.JS logo'}
                 />
                 <SkillCard
                   title={'ExpoJS'}
-                  img={`${root}/img/expojs.svg`}
+                  img={`${publicRoot}/img/expojs.svg`}
                   alt={'ExpoJS logo'}
                 />
                 <SkillCard
                   title={'Laravel'}
-                  img={`${root}/img/laravel.svg`}
+                  img={`${publicRoot}/img/laravel.svg`}
                   alt={'Laravel logo'}
                 />
                 <SkillCard
                   title={'Python'}
-                  img={`${root}/img/python.svg`}
+                  img={`${publicRoot}/img/python.svg`}
                   alt={'Python logo'}
                 />
                 <SkillCard
                   title={'Django'}
-                  img={`${root}/img/django.svg`}
+                  img={`${publicRoot}/img/django.svg`}
                   alt={'Django logo'}
                 />
                 <SkillCard
                   title={'Ansible'}
-                  img={`${root}/img/ansible.svg`}
+                  img={`${publicRoot}/img/ansible.svg`}
                   alt={'Ansible logo'}
                 />
                 <SkillCard
                   title={'Nginx'}
-                  img={`${root}/img/nginx.svg`}
+                  img={`${publicRoot}/img/nginx.svg`}
                   alt={'Nginx logo'}
                 />
                 <SkillCard
                   title={'Docker'}
-                  img={`${root}/img/docker.svg`}
+                  img={`${publicRoot}/img/docker.svg`}
                   alt={'Docker logo'}
                 />
                 <SkillCard
                   title={'PostgreSQL'}
-                  img={`${root}/img/postgresql.svg`}
+                  img={`${publicRoot}/img/postgresql.svg`}
                   alt={'PostgreSQL logo'}
                 />
                 <SkillCard
                   title={'Azure'}
-                  img={`${root}/img/azure.svg`}
+                  img={`${publicRoot}/img/azure.svg`}
                   alt={'Azure logo'}
                 />
                 {/* <SkillCard */}
@@ -229,22 +227,22 @@ export default function HomePage() {
               <div className="mt-4 flex flex-wrap">
                 <ContactCard
                   title={'GitHub'}
-                  img={`${root}/img/github.svg`}
+                  img={`${publicRoot}/img/github.svg`}
                   link="https://github.com/LeeSF03"
                 />
                 <ContactCard
                   title={'LinkedIn'}
-                  img={`${root}/img/linkedin.svg`}
+                  img={`${publicRoot}/img/linkedin.svg`}
                   link={'https://www.linkedin.com/in/lee-shuen-fei-32479b203/'}
                 />
                 {/* <ContactCard */}
                 {/*   title={'Resume'} */}
-                {/*   img={`${root}/img/resume.png`} */}
-                {/*   link={`${root}/file/leesf_resume.pdf`} */}
+                {/*   img={`${publicRoot}/img/resume.png`} */}
+                {/*   link={`${publicRoot}/file/leesf_resume.pdf`} */}
                 {/* /> */}
                 <ContactCard
                   title={'Email'}
-                  img={`${root}/img/outlook.svg`}
+                  img={`${publicRoot}/img/outlook.svg`}
                   link={'mailto:1106222002@scholar.mila.edu.my'}
                 />
                 {/* <ContactCard */}
