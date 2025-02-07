@@ -4,10 +4,12 @@ import { ContactCard } from '@/components/ContactCard'
 import { SkillCard } from '@/components/SkillCard'
 import { MenuItemWithRef, Topbar } from '@/components/Topbar'
 import Image from 'next/image'
+import { pages } from '@/constants/global'
+import { DropdownMenuNav } from '@/components/DropdownMenuNav'
 
 const root = process.env.PUBLIC_URL ?? ''
 
-export default function Home() {
+export default function HomePage() {
   //-----Variables-----
   const aboutMeRef = useRef<HTMLDivElement>(null)
   const skillsRef = useRef<HTMLDivElement>(null)
@@ -20,6 +22,9 @@ export default function Home() {
 
   return (
     <>
+      <div className="flex flex-row-reverse">
+        <DropdownMenuNav pages={pages} />
+      </div>
       <Topbar menuItemsWithRef={menuItems} />
       <div className="flex flex-1 justify-center">
         <div className="w-full space-y-8 pt-5">
