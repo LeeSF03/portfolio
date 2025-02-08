@@ -22,7 +22,7 @@ jobs:
         run: yarn install
 
       - name: Run Vitest
-        run: yarn test --reporter=json > vitest-report.json || echo "test fail" > is-test-fail
+        run: yarn test changed --reporter=json > vitest-report.json || echo "test fail" > is-test-fail
 
       - name: Get test results
         id: test-results
