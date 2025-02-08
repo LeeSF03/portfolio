@@ -32,7 +32,7 @@ export default function HomePage() {
           >
             <div className="flex flex-col items-center rounded-3xl border-4 border-gray-800 p-3 shadow-[9px_9px_lightblue] sm:flex-row sm:rounded-full">
               <Image
-                src={'/img/catpuccin.png'}
+                src={`${publicRoot}/img/catpuccin.png`}
                 alt={'Catppuccin profile picture'}
                 width={200}
                 height={200}
@@ -44,7 +44,7 @@ export default function HomePage() {
               <div className="w-full max-w-xl">
                 <div className="flex items-center py-1">
                   <Image
-                    src={'/img/star.png'}
+                    src={`${publicRoot}/img/star.png`}
                     width={26}
                     height={20}
                     alt={'star point'}
@@ -54,7 +54,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center py-1">
                   <Image
-                    src={'/img/star.png'}
+                    src={`${publicRoot}/img/star.png`}
                     width={26}
                     height={20}
                     alt={'star point'}
@@ -66,7 +66,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center py-1">
                   <Image
-                    src={'/img/star.png'}
+                    src={`${publicRoot}/img/star.png`}
                     width={26}
                     height={20}
                     alt={'star point'}
@@ -78,7 +78,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center py-1">
                   <Image
-                    src={'/img/star.png'}
+                    src={`${publicRoot}/img/star.png`}
                     width={26}
                     height={20}
                     alt={'star point'}
