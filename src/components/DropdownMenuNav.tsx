@@ -27,8 +27,9 @@ const getWebsiteSectionNameFromPath = (path: string) => {
 export const DropdownMenuNav = () => {
   //=====Variables=====
   const pathname = usePathname()
-  console.log(pathname)
   const sectionName = getWebsiteSectionNameFromPath(pathname)
+
+  //=====View======
   return (
     <DropdownMenu>
       <div className="group">
