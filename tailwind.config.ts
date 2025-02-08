@@ -1,4 +1,6 @@
 import type { Config } from 'tailwindcss'
+import tailwindAnimate from 'tailwindcss-animate'
+import tailwindMotion from 'tailwindcss-motion'
 
 export default {
   darkMode: ['class'],
@@ -19,9 +21,9 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        'blog-title': ['Times New Roman', 'Times', 'serif'],
+        'blog-title': ['Playfair Display', 'latin'],
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('tailwindcss-motion')],
+  plugins: [tailwindAnimate, tailwindMotion],
 } satisfies Config
