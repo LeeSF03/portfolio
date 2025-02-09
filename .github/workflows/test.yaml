@@ -2,8 +2,10 @@ name: Run Vitest on NextJS
 run-name: Running test written by ${{ github.actor }}
 on:
   pull_request:
-    branches:
-      - main
+    paths:
+      - '**/__tests__/**'
+      - '**/*.test.ts'
+      - '**/*.test.tsx'
 
 jobs:
   run_vitest:
@@ -22,7 +24,7 @@ jobs:
         run: yarn install
 
       - name: Run Vitest
-        run: yarn test changed --reporter=json > vitest-report.json || echo "test fail" > is-test-fail
+        run: yarn test --reporter=json > vitest-report.json || echo "test fail" > is-test-fail
 
       - name: Get test results
         id: test-results
