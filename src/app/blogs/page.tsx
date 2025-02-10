@@ -1,4 +1,3 @@
-import { publicRoot } from '@/constants/global'
 import BlogCard from '@/components/BlogCard'
 import deployment from '@/images/blogs/deployment/deployment.png'
 
