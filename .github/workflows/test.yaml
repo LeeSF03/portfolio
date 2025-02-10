@@ -2,8 +2,10 @@ name: Run Vitest on NextJS
 run-name: Running test written by ${{ github.actor }}
 on:
   pull_request:
-    branches:
-      - main
+    paths:
+      - '**/__tests__/**'
+      - '**/*.test.ts'
+      - '**/*.test.tsx'
 
 jobs:
   run_vitest:
