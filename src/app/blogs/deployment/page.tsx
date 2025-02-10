@@ -1,9 +1,6 @@
 import CodeBlock from '@/components/CodeBlock'
 import Image from 'next/image'
-import deployment from '@/images/blogs/deployment/deployment.png'
-import azure1 from '@/images/blogs/deployment/azure1.png'
-import azure2 from '@/images/blogs/deployment/azure2.png'
-import awxGithubAction from '@/images/blogs/deployment/awx-or-github-actions.png'
+import { publicRoot } from '@/constants/global'
 
 export default function DeploymentPage() {
   return (
@@ -25,8 +22,10 @@ export default function DeploymentPage() {
           }
         </p>
         <Image
-          src={deployment}
-          alt={''}
+          src={`${publicRoot}/img/blogs/deployment/deployment.png`}
+          width={1920}
+          height={1080}
+          alt={'deployment'}
           className="rounded-2xl border-2 border-gray-500 shadow-[5px_5px_lightblue]"
         />
         <div className="font-jetbrains text-2xl font-semibold">
@@ -358,12 +357,16 @@ volumes:
         </div>
         <Image
           className="rounded-2xl border-2 border-gray-800"
-          src={azure1}
+          src={`${publicRoot}/img/blogs/deployment/azure1.png`}
+          width={1080}
+          height={1920}
           alt={'azure step 1'}
         />
         <Image
           className="rounded-2xl border-2 border-gray-800"
-          src={azure2}
+          src={`${publicRoot}/img/blogs/deployment/azure2.png`}
+          width={1080}
+          height={1920}
           alt={'azure step 2'}
         />
       </div>
@@ -778,7 +781,8 @@ jobs:
           }
         </p>
         <Image
-          src={awxGithubAction}
+          src={`${publicRoot}/img/blogs/deployment/awx-or-github-actions.png`}
+          width={400}
           height={300}
           className="rounded-2xl border-2 border-gray-800"
           alt="AWX or GitHub Actions"
