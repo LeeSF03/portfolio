@@ -22,6 +22,7 @@ export default {
       },
       fontFamily: {
         'blog-title': ['Playfair Display', 'latin'],
+        jetbrains: ['var(--font-jetbrains-mono)'],
       },
     },
   },

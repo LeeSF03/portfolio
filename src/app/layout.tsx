@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { DropdownMenuNav } from '@/components/DropdownMenuNav'
 
@@ -13,6 +13,12 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--font-jetbrains-mono',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+  style: ['normal', 'italic'],
+})
+
 export const metadata: Metadata = {
   title: 'LeeSF - Programmer',
   description: 'LeeSF Software Engineering Experiences and Projects',
@@ -24,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${jetbrainsMono.variable}`}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-[url(/img/background.jpg)] bg-fixed antialiased`}
       >
