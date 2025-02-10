@@ -16,9 +16,12 @@ export default function DeploymentPage() {
         <div className="font-jetbrains text-3xl font-semibold">
           {'Getting Started'}
         </div>
+        <div className="font-jetbrains text-2xl font-semibold">
+          {'Building Something to Host'}
+        </div>
         <p className="font-jetbrains">
           {
-            "Building Something to Host The first step to hosting is actually having something to host—so let's get to it! For me, a simple blogging website built with Next.js and styled with Tailwind CSS is a great starting point. Now, I understand that using a Next.js server for a basic website might seem like overkill. However, I plan to expand this project by adding blogs, games, and other features. Just hosting Next.js alone would be too simplistic—especially since this project is also an opportunity to explore DevOps. That’s where Nginx comes in as a reverse proxy and CDN."
+            "The first step to hosting is actually having something to host—so let's get to it! For me, a simple blogging website built with Next.js and styled with Tailwind CSS is a great starting point. Now, I understand that using a Next.js server for a basic website might seem like overkill. However, I plan to expand this project by adding blogs, games, and other features. Just hosting Next.js alone would be too simplistic—especially since this project is also an opportunity to explore DevOps. That’s where Nginx comes in as a reverse proxy and CDN."
           }
         </p>
         <Image
@@ -26,7 +29,7 @@ export default function DeploymentPage() {
           alt={''}
           className="rounded-2xl border-2 border-gray-500 shadow-[5px_5px_lightblue]"
         />
-        <div className="font-jetbrains text-3xl font-semibold">
+        <div className="font-jetbrains text-2xl font-semibold">
           {'Why Use Nginx with Next.js?'}
         </div>
         <p className="font-jetbrains">
