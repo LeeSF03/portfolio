@@ -1,6 +1,6 @@
 import CodeBlock from '@/components/CodeBlock'
 import Image from 'next/image'
-import deployment from '@/images/blogs/deployment.png'
+import deployment from '@/images/blogs/deployment/deployment.png'
 import azure1 from '@/images/blogs/deployment/azure1.png'
 import azure2 from '@/images/blogs/deployment/azure2.png'
 import awxGithubAction from '@/images/blogs/deployment/awx-or-github-actions.png'

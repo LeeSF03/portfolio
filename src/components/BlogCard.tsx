@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
 type BlogCardProps = {
   blogId: string
   blogTitle: string
-  imageHref: string
+  imageHref: string | StaticImageData
 }
 
 export default function BlogCard({
@@ -24,7 +24,7 @@ export default function BlogCard({
               height={1080}
             />
           </div>
-          <div className="font-blog-title z-10 flex-1 bg-orange-300 p-3 text-xl font-semibold">
+          <div className="z-10 flex-1 bg-orange-300 p-3 font-blog-title text-xl font-semibold">
             {blogTitle}
           </div>
         </div>
