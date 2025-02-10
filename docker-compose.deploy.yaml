@@ -7,30 +7,20 @@ services:
       - static:/app/.next/static
       - images:/app/public/img
     ports:
-      - "3000:3000"
+      - '3000:3000'
     env_file: ./.env
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:3000"]
-    #   interval: 1m30s
-    #   timeout: 10s
-    #   retries: 3
-    #   start_period: 1m
-    #   start_interval: 5s
 
   nginx:
     image: leesf003/portfolio-nginx
     container_name: nginx
-    # depends_on:
-    #   web:
-    #     condition: service_healthy
     volumes:
       - static:/var/www/portfolio/_next/static
       - images:/var/www/portfolio/img
       - acme:/var/www/acme
       - /etc/letsencrypt:/var/www/cert
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     environment:
       - NGINX_HOST=portfolio-nginx.com
       - NGINX_PORT=80
