@@ -22,6 +22,7 @@ export default function BlogCard({
               alt={'deployment cover'}
               width={1920}
               height={1080}
+              fill={true}
             />
           </div>
           <div className="z-10 flex-1 bg-orange-300 p-3 font-blog-title text-xl font-semibold">
