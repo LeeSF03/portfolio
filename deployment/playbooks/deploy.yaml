@@ -19,6 +19,11 @@
         prune: true
         name: leesf003/portfolio-web
 
+    - name: Prune cert-renewal-cron images
+      community.docker.docker_image_remove:
+        prune: true
+        name: leesf003/cert-renewal-cron
+
     - name: Pull portfolio web image
       community.docker.docker_image_pull:
         name: leesf003/portfolio-web
