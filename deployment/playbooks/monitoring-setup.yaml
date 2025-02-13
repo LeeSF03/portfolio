@@ -1,0 +1,96 @@
+---
+- name: Monitoring Stack Set Up
+  hosts: azure
+  tasks:
+    - name: Add metric address to docker daemon.json
+      copy:
+        content: |
+          {
+            "metrics-addr": "172.17.0.1:9323"
+          }
+        dest: /etc/docker/daemon.json
+
+    - name: Create prometheus external volume
+      community.docker.docker_volume:
+        name: prometheus
+        state: present
+
+    - name: Copy docker compose for monitoring setup
+      copy:
+        src: ../monitoring-stack/docker-compose.monitoring.yaml
+        dest: '/home/{{ ansible_user }}/docker-compose.monitoring.yaml'
+        mode: '0644'
+        group: leesf
+        owner: leesf
+
+    - name: Run docker compose down
+      community.docker.docker_compose_v2:
+        state: absent
+        remove_volumes: true
+        project_src: '/home/{{ ansible_user }}'
+        files:
+          - docker-compose.monitoring.yaml
+
+    - name: Prune docker prometheus images
+      community.docker.docker_image_remove:
+        prune: true
+        name: leesf003/portfolio-prometheus
+
+    - name: Prune docker grafana images
+      community.docker.docker_image_remove:
+        prune: true
+        name: leesf003/portfolio-grafana
+
+    - name: Prune docker node-exporter images
+      community.docker.docker_image_remove:
+        prune: true
+        name: prom/node-exporter
+
+    - name: Prune docker node-exporter images
+      community.docker.docker_image_remove:
+        prune: true
+        name: gcr.io/cadvisor/cadvisor
+
+    - name: Prune docker nginx-prometheus-exporter images
+      community.docker.docker_image_remove:
+        prune: true
+        name: nginx/nginx-prometheus-exporter
+
+    - name: Pull portfolio prometheus image
+      community.docker.docker_image_pull:
+        name: leesf003/portfolio-prometheus
+        platform: amd64
+
+    - name: Pull portfolio grafana image
+      community.docker.docker_image_pull:
+        name: leesf003/portfolio-grafana
+        platform: amd64
+
+    - name: Pull portfolio nginx-prometheus-exporter image
+      community.docker.docker_image_pull:
+        name: nginx/nginx-prometheus-exporter:1.4.0
+        platform: amd64
+
+    - name: Pull portfolio cadvisor image
+      community.docker.docker_image_pull:
+        name: gcr.io/cadvisor/cadvisor:latest
+        platform: amd64
+
+    - name: Pull portfolio node-exporter image
+      community.docker.docker_image_pull:
+        name: prom/node-exporter:latest
+        platform: amd64
+
+    - name: Copy docker compose for monitoring setup
+      copy:
+        src: ./../monitoring-stack/docker-compose.monitoring.yaml
+        dest: '/home/{{ ansible_user }}/docker-compose.monitoring.yaml'
+        mode: '0644'
+        group: leesf
+        owner: leesf
+
+    - name: Run Docker Compose file for monitoring setup
+      community.docker.docker_compose_v2:
+        project_src: '/home/{{ ansible_user }}'
+        files:
+          - docker-compose.monitoring.yaml
