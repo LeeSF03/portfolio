@@ -39,6 +39,22 @@
         name: leesf003/cert-renewal-cron
         platform: amd64
 
+    - name: Copy docker compose file
+      copy:
+        src: ../../docker-compose.deploy.yaml
+        dest: '/home/{{ ansible_user }}/docker-compose.yaml'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: '0644'
+
+    - name: Copy .env file
+      copy:
+        src: ../../.env
+        dest: '/home/{{ ansible_user }}/.env'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: '0644'
+
     - name: Run docker compose up
       community.docker.docker_compose_v2:
         state: present
