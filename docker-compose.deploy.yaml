@@ -52,4 +52,5 @@ volumes:
 
 networks:
   deployment:
+    name: deployment
     driver: bridge
