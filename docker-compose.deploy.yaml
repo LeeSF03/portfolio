@@ -9,6 +9,8 @@ services:
     ports:
       - '3000:3000'
     env_file: ./.env
+    networks:
+      - deployment
 
   nginx:
     image: leesf003/portfolio-nginx
@@ -24,6 +26,8 @@ services:
     environment:
       - NGINX_HOST=portfolio-nginx.com
       - NGINX_PORT=80
+    networks:
+      - deployment
 
   certbot:
     image: leesf003/cert-renewal-cron
@@ -33,6 +37,8 @@ services:
     volumes:
       - acme:/letsencrypt
       - /etc/letsencrypt:/etc/letsencrypt
+    networks:
+      - deployment
 
 volumes:
   static:
@@ -43,3 +49,7 @@ volumes:
 
   # cert:
   #   external: true
+
+networks:
+  deployment:
+    driver: bridge
