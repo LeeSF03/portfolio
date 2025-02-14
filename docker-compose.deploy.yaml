@@ -13,6 +13,8 @@ services:
   nginx:
     image: leesf003/portfolio-nginx
     container_name: nginx
+    depends_on:
+      - web
     volumes:
       - static:/var/www/portfolio/_next/static
       - images:/var/www/portfolio/img
