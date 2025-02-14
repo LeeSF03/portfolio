@@ -6,8 +6,6 @@ services:
       - /app/node_modules
       - static:/app/.next/static
       - images:/app/public/img
-    ports:
-      - '3000:3000'
     env_file: ./.env
     networks:
       - deployment
@@ -20,6 +18,7 @@ services:
       - images:/var/www/portfolio/img
       - acme:/var/www/acme
       - /etc/letsencrypt:/var/www/cert
+      - nginx_logs:/var/log/nginx
     ports:
       - '80:80'
       - '443:443'
@@ -49,6 +48,8 @@ volumes:
 
   # cert:
   #   external: true
+
+  nginx_logs:
 
 networks:
   deployment:
