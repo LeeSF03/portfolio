@@ -15,6 +15,11 @@
         name: prometheus
         state: present
 
+    - name: Create grafana external volume
+      community.docker.docker_volume:
+        name: grafana
+        state: present
+
     - name: Copy docker compose for monitoring setup
       copy:
         src: ../monitoring-stack/docker-compose.monitoring.yaml

@@ -1,0 +1,47 @@
+services:
+  promtail:
+    image: leesf003/portfolio-promtail
+    container_name: promtail
+    volumes:
+      - nginx_logs:/var/log/nginx
+    networks:
+      - deployment
+    command: -config.file=/etc/promtail/config.yaml
+
+  loki:
+    image: leesf003/portfolio-loki
+    container_name: loki
+    ports:
+      - '3100:3100'
+    volumes:
+      - loki:/loki
+    networks:
+      - deployment
+
+  grafana:
+    image: leesf003/portfolio-grafana
+    container_name: grafana
+    ports:
+      - '3001:3000'
+    volumes:
+      - grafana:/var/lib/grafana
+    networks:
+      - deployment
+
+volumes:
+  nginx_logs:
+    name: nginx_logs
+    external: true
+
+  loki:
+    name: loki
+    external: true
+
+  grafana:
+    name: grafana
+    external: true
+
+networks:
+  deployment:
+    name: deployment
+    external: true
