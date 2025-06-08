@@ -19,7 +19,7 @@ services:
       - static:/var/www/portfolio/_next/static
       - images:/var/www/portfolio/img
       - acme:/var/www/acme
-      - /etc/letsencrypt:/var/www/cert
+      - cert:/var/www/cert
       - nginx_logs:/var/log/nginx
     ports:
       - '80:80'
@@ -37,7 +37,7 @@ services:
       - nginx
     volumes:
       - acme:/letsencrypt
-      - /etc/letsencrypt:/etc/letsencrypt
+      - cert:/etc/letsencrypt
     networks:
       - deployment
 
@@ -48,8 +48,9 @@ volumes:
 
   acme:
 
-  # cert:
-  #   external: true
+  cert:
+    external: true
+    name: leesf_cert
 
   nginx_logs:
     name: nginx_logs
